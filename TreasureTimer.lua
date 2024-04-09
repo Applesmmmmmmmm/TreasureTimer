@@ -2,7 +2,7 @@ addon.name    = 'TreasureTimer';
 addon.author  = 'Apples_mmmmmmmm';
 addon.version = '1.0';
 addon.desc    = 'Displays expected maximum respawn timers for chests/coffers based on last open attempt. Requires: tTimers.';
-addon.link    = 'https://github.com/Apples_mmmmmmmm/TreasureTimer';
+addon.link    = 'https://github.com/Applesmmmmmmmm/TreasureTimer';
 
 
 require('common');
