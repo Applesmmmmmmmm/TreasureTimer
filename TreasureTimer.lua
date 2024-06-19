@@ -56,10 +56,7 @@ ashita.events.register('packet_in', 'packet_in_cb', function(e)
 
     -- Packet: Inventory Update Completed
     if (e.id == 0x001D) then
-        hidden.zoning = false;
-        -- if (startingGilAmount == 0 and (partyManager:GetMemberIsActive(0) ~= 0 or partyManager:GetMemberServerId(0) ~= 0)) then
-        --     ResetGilPerHour()
-        -- end
+        hidden.zoning = false;        
         return;
     end
 
@@ -99,7 +96,7 @@ ashita.events.register('packet_out', 'packet_out_cb', function(e)
 end);
 
 local function SetTimer(zoneName, newCurrentValue)
-    AshitaCore:GetChatManager():QueueCommand(-1, '/tt custom \"'..zoneName..'\" '..newCurrentValue..'m')
+    AshitaCore:GetChatManager():QueueCommand(-1, '/tt custom \"'..zoneName..'\" '..newCurrentValue..'m'..' \"Estimated time that the chest or coffer will be available to open in this zone.\"'..' '..'30m')
 end
 
 
@@ -126,12 +123,7 @@ ashita.events.register('text_in', 'text_in_cb', function(e)
         local minutesRemaining = tonumber(helper.TrimWhiteSpace(string.sub(rep, string.len(rep) - 2)))
         if (minutesRemaining == nil) then
             minutesRemaining = tonumber(helper.TrimWhiteSpace(string.sub(rep, string.len(rep) - 1)))
-        end
-
-        -- local current = GetProgressDataCurrent(zoneName)
-        -- if (current and math.floor(current) == minutesRemaining) then
-        --     return
-        -- end
+        end        
 
         local myIndex = partyManager:GetMemberTargetIndex(0);
         local playerPos = { entityManager:GetLocalPositionX(myIndex), entityManager:GetLocalPositionY(myIndex),
